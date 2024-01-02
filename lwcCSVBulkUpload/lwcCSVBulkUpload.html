@@ -6,6 +6,13 @@
                              multiple="false"
                              accept=".csv"
                              onchange={handleInputChange}></lightning-input>
+
+            <!-- Conditionally display the file name -->
+            <template if:true={fileName}>
+                <div class="slds-m-top_small">
+                    <p><strong>Selected File:</strong> {fileName}</p>
+                </div>
+            </template>
         </div>
         <div class="slds-p-around_small slds-align_absolute-center">
             <template if:false={importScheduled}>
@@ -14,8 +21,8 @@
                                   title="Cancel" onclick={cancel}
                                   class="slds-m-left_x-small"></lightning-button>
                 <lightning-button variant="brand"
-                                  label="Create"
-                                  title="Create" onclick={createAccounts}
+                                  label="Start Import"
+                                  title="Start Import" onclick={createAccounts}
                                   class="slds-m-left_x-small"></lightning-button>
             </template>
             <template if:true={importScheduled}>

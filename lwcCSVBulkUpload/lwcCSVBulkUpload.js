@@ -12,6 +12,7 @@ export default class lwcCSVBulkUpload extends LightningElement {
     loading = false;
     @track _results;
     @track _rows;
+    @track fileName = '';
     @track importScheduled = false;
 
     get columns(){
@@ -66,6 +67,7 @@ export default class lwcCSVBulkUpload extends LightningElement {
     handleInputChange(event){
         if(event.target.files.length > 0){
             const file = event.target.files[0];
+            this.fileName = file.name;
             this.loading = true;
             Papa.parse(file, {
                 quoteChar: '"',
