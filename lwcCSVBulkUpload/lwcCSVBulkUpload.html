@@ -1,0 +1,26 @@
+<template>
+    <lightning-card title="Import Bulk CSV" icon-name="standard:account">
+        <div class="slds-p-around_medium">
+            <lightning-input type="file"
+                             label="CSV file"
+                             multiple="false"
+                             accept=".csv"
+                             onchange={handleInputChange}></lightning-input>
+        </div>
+        <div class="slds-p-around_small slds-align_absolute-center">
+            <template if:false={importScheduled}>
+                <lightning-button variant="neutral"
+                                  label="Cancel"
+                                  title="Cancel" onclick={cancel}
+                                  class="slds-m-left_x-small"></lightning-button>
+                <lightning-button variant="brand"
+                                  label="Create"
+                                  title="Create" onclick={createAccounts}
+                                  class="slds-m-left_x-small"></lightning-button>
+            </template>
+            <template if:true={importScheduled}>
+                <p>Your CSV Import has been scheduled.</p>
+            </template>
+        </div>
+    </lightning-card>
+</template>
